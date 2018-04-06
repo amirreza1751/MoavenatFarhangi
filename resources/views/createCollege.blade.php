@@ -52,7 +52,7 @@
                         <div class="form-group row mb-1">
                             <div class="col-md-6 offset-md-3">
                                 <button type="submit" class="btn btn-primary btn-block">
-                                    {{ __('ثبت طرح و ورود به مرحله بعد >>') }}
+                                    {{ __('ثبت دانشکده و ورود به مرحله بعد >>') }}
                                 </button>
                             </div>
                         </div>
