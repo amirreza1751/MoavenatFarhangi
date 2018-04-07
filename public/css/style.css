@@ -10,4 +10,4 @@
     background-color: rgba(0, 123, 255, 0.08);
 }
 
-@font-face{font-family:'Yekan';src:url('fonts/BYekan.ttf') format('truetype'), url('fonts/BYekan.eot?#') format('eot'), url('fonts/BYekan.woff') format('woff');font-style:normal;font-weight:normal;}
+@font-face{font-family:'Yekan';src:url('/fonts/BYekan.ttf') format('truetype'), url('/fonts/BYekan.eot?#') format('eot'), url('/fonts/BYekan.woff') format('woff');font-style:normal;font-weight:normal;}
