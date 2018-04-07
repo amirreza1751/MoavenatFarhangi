@@ -18,23 +18,13 @@
     {{--</script>--}}
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus');
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
+    {{--<script>--}}
+        {{--$('#myModal').on('shown.bs.modal', function () {--}}
+            {{--$('#myInput').trigger('focus');--}}
+        {{--});--}}
+    {{--</script>--}}
 
-            var a = $("#1").val();
-            var b = $("#2").val();
-            var c = $("#3").val();
-            var d = $("#4").val();
-            var e = $("#5").val();
-            $("#6").val()
-
-        });
-    </script>
+    <script src="/js/suggestedGrades.js"></script>
 @endsection
 
 @section('content')
@@ -72,7 +62,7 @@
 
                                 <tr>
                                     <td>محمد پشم فروش</td>
-                                    <td class="text-center"><input id="1" type="text" class="text-center" value="@if($referees['pashm']->count() != 0){{$referees['pashm'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
+                                    <td class="text-center"><input id="1-1" type="text" class="text-center" value="@if($referees['pashm']->count() != 0){{$referees['pashm'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['pashm']->count() != 0){{$referees['pashm'][1]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['pashm']->count() != 0){{$referees['pashm'][2]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['pashm']->count() != 0){{$referees['pashm'][3]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
@@ -87,7 +77,7 @@
 
                                 <tr>
                                     <td>پریسا شریعت جعفری</td>
-                                    <td class="text-center"><input id="1" type="text" class="text-center" value="@if($referees['jafari']->count() != 0){{$referees['jafari'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
+                                    <td class="text-center"><input id="1-2" type="text" class="text-center" value="@if($referees['jafari']->count() != 0){{$referees['jafari'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['jafari']->count() != 0){{$referees['jafari'][1]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['jafari']->count() != 0){{$referees['jafari'][2]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['jafari']->count() != 0){{$referees['jafari'][3]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
@@ -102,7 +92,7 @@
 
                                 <tr>
                                     <td>سارا میرزایی</td>
-                                    <td class="text-center"><input id="1" type="text" class="text-center" value="@if($referees['mirzayi']->count() != 0){{$referees['mirzayi'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
+                                    <td class="text-center"><input id="1-3" type="text" class="text-center" value="@if($referees['mirzayi']->count() != 0){{$referees['mirzayi'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['mirzayi']->count() != 0){{$referees['mirzayi'][1]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['mirzayi']->count() != 0){{$referees['mirzayi'][2]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['mirzayi']->count() != 0){{$referees['mirzayi'][3]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
@@ -117,7 +107,7 @@
 
                                 <tr>
                                     <td>سید محمد فاضلی</td>
-                                    <td class="text-center"><input id="1" type="text" class="text-center" value="@if($referees['fazeli']->count() != 0){{$referees['fazeli'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
+                                    <td class="text-center"><input id="1-4" type="text" class="text-center" value="@if($referees['fazeli']->count() != 0){{$referees['fazeli'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['fazeli']->count() != 0){{$referees['fazeli'][1]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['fazeli']->count() != 0){{$referees['fazeli'][2]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['fazeli']->count() != 0){{$referees['fazeli'][3]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
@@ -132,7 +122,7 @@
 
                                 <tr>
                                     <td>علیرضا کمری</td>
-                                    <td class="text-center"><input id="1" type="text" class="text-center" value="@if($referees['kamari']->count() != 0){{$referees['kamari'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
+                                    <td class="text-center"><input id="1-5" type="text" class="text-center" value="@if($referees['kamari']->count() != 0){{$referees['kamari'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['kamari']->count() != 0){{$referees['kamari'][1]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['kamari']->count() != 0){{$referees['kamari'][2]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['kamari']->count() != 0){{$referees['kamari'][3]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>

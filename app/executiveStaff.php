@@ -14,7 +14,7 @@ class executiveStaff extends Model
 
     public function project()
     {
-        return $this->belongsToMany('App\project', 'staff_project');
+        return $this->belongsToMany('App\project', 'staff_projects', 'staff_id', 'project_id');
     }
     public function forum()
     {

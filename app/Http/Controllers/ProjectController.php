@@ -77,8 +77,11 @@ class ProjectController extends Controller
     }
     public function show($id){
 //        $project = project::where('id', $id)->first();
-        $project = project::with('forum')->where('id', $id)->first();
-        return $project;
+        $project = project::with('forum','costs', 'executiveStaff')->where('id', $id)->get(['name', DB::raw('pdate(start_date) as start_date') , 'forum_id', 'id', 'type', DB::raw('pdate(end_date) as end_date'), 'place','purpose','sideway_programs','detailed_programs','innovation','sponsors','description','letter_number','manager_sign','expert_sign','level','capacity','cost','final_cost','suggest_form','final_report','documentation','grade','master','forum_id','start_time','end_time','total_hours' ])->first();
+//        $project = project::all('name', DB::raw('pdate(start_date)'))->first();
+        $forums = forum::all();
+        return view('editProject', compact('project', 'forums'));
+//        return $project;
     }
 
 

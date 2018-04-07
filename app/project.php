@@ -32,6 +32,6 @@ class project extends Model
 
     public function executiveStaff()
     {
-        return $this->belongsToMany('App\executiveStaff', 'staff_project');
+        return $this->belongsToMany('App\executiveStaff', 'staff_projects', 'project_id', 'staff_id');
     }
 }

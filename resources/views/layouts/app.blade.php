@@ -27,18 +27,7 @@
 
     @yield('head')
 
-    <!-- persian datepicker -->
-    {{--<script src="/bower_components/jquery/dist/jquery.js"></script>--}}
-    {{--<script src="/bower_components/persian-date/dist/persian-date.js"></script>--}}
-    {{--<script src="/bower_components/persian-datepicker/dist/js/persian-datepicker.js"></script>--}}
-    {{--<link rel="stylesheet" href="/bower_components/persian-datepicker/dist/css/persian-datepicker.css"/>--}}
-    {{--<script type="text/javascript">--}}
-        {{--$(document).ready(function() {--}}
-            {{--// $(".example1").pDatepicker();--}}
-            {{--alert("jgfchg");--}}
-        {{--});--}}
-    {{--</script>--}}
-    <!-- persian datepicker ends -->
+
 
 </head>
 <body>

@@ -22,30 +22,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                {{--<div class="card">--}}
-                {{--<div class="card-header text-right">اضافه کردن طرح</div>--}}
 
-                {{--<div class="card-body text-right">--}}
-                {{--@if (session('status'))--}}
-                {{--<div class="alert alert-success">--}}
-                {{--{{ session('status') }}--}}
-                {{--</div>--}}
-                {{--@endif--}}
-
-                {{--طرح اضافه کنید.--}}
-                {{--{{$projects->name}}--}}
-
-                {{--</div>--}}
-                {{--</div>--}}
 
                 <div class="card">
                     <div class="card-header text-right">
-                        <div class="float-right">اضافه کردن طرح</div>
-                        <div class="float-left"><a href="{{url('/home')}}"> بازگشت </a> </div>
+                        <div class="float-right">مشاهده و ویرایش طرح</div>
+                        <div class="float-left"><a href="{{url('/projects')}}"> بازگشت </a> </div>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/projects/new">
-                        @csrf
+                        {{--<form method="POST" action="/projects/new">--}}
+                        {{--@csrf--}}
 
                         <table class="table table-bordered table-hover text-center" dir="rtl">
                         <thead>
@@ -56,43 +42,42 @@
                         <tbody>
                         <tr>
                         <td scope="row" >عنوان طرح:</td>
-                        <td colspan="1"><input type="text" name="name" max="191" class="form-control"></td>
+                        <td colspan="1"><input type="text" name="name" max="191" class="form-control" value="{{$project->name}}"></td>
                         <td >شماره نامه</td>
-                        <td  colspan="2"><input type="text" name="letter_number" max="191" class="form-control" ></td>
+                        <td  colspan="2"><input type="text" name="letter_number" max="191" class="form-control" value="{{$project->letter_number}}" ></td>
                         </tr>
                         <tr>
                         <td scope="row">انجمن برگزار کننده:</td>
                         <td colspan="1">
                         <select name="forum_name" id="" class="custom-select">
-                        <option selected disabled value="">انتخاب کنید.</option>
+                        <option selected  value="{{$project->forum->name}}">{{$project->forum->name}}</option>
                         @foreach($forums as $forum)
                         <option value="{{$forum->name}}">{{$forum->name}}</option>
                         @endforeach
                         </select>
                         </td>
                         <td colspan="1">مکان برگزاری:</td>
-                        <td colspan="2"><input type="text" name="place" class="form-control"></td>
+                        <td colspan="2"><input type="text" name="place" class="form-control" value="{{$project->place}}"></td>
                         </tr>
 
                         <tr>
                         <td scope="row">تاریخ شروع:</td>
-                        <td colspan="1"><input type="text" placeholder="روز/ماه/سال"  name="start_date" class="form-control" ></td>
+                        <td colspan="1"><input type="text" placeholder="روز/ماه/سال"  name="start_date" class="form-control"  value="{{$project->start_date}}"></td>
                         <td >ساعت شروع:</td>
-                        <td colspan="2"><input type="text" placeholder="دقیقه:ساعت" name="start_time" class="form-control"></td>
+                        <td colspan="2"><input type="text" placeholder="دقیقه:ساعت" name="start_time" class="form-control"  value="{{$project->start_time}}"></td>
                         </tr>
                         <tr>
                         <td scope="row">تاریخ پایان:</td>
-                        <td colspan="1"><input type="text" placeholder="روز/ماه/سال" name="end_date" class="form-control"></td>
+                        <td colspan="1"><input type="text" placeholder="روز/ماه/سال" name="end_date" class="form-control"  value="{{$project->end_date}}"></td>
                         <td>ساعت پایان:</td>
-                        <td colspan="2"><input type="text" placeholder="دقیقه:ساعت" name="end_time" class="form-control"></td>
+                        <td colspan="2"><input type="text" placeholder="دقیقه:ساعت" name="end_time" class="form-control"  value="{{$project->end_time}}"></td>
                         </tr>
 
                         <tr>
                         <td scope="row" width="15%">نوع طرح</td>
                         <td>
                         <select name="type" id="" class="custom-select">
-                        <option selected disabled value="">انتخاب کنید.</option>
-                        <option value="ترویجی">ترویجی</option>
+                        <option selected value="ترویجی">ترویجی</option>
                         </select>
                         </td>
 
@@ -166,14 +151,14 @@
                         </tbody>
                         </table>
 
-                        <div class="form-group row mb-1">
-                        <div class="col-md-6 offset-md-3">
-                        <button type="submit" class="btn btn-primary btn-block">
-                        {{ __('ثبت طرح و ورود به مرحله بعد >>') }}
-                        </button>
-                        </div>
-                        </div>
-                        </form>
+                        {{--<div class="form-group row mb-1">--}}
+                        {{--<div class="col-md-6 offset-md-3">--}}
+                        {{--<button type="submit" class="btn btn-primary btn-block">--}}
+                        {{--{{ __('ثبت طرح و ورود به مرحله بعد >>') }}--}}
+                        {{--</button>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--</form>--}}
                     </div>
                 </div>
             </div>

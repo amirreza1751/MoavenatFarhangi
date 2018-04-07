@@ -10,12 +10,14 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <style>body { font-family: BYekan,'BYekan',tahoma;}</style>
+        <link href='http://www.fontonline.ir/css/BYekan.css' rel='stylesheet' type='text/css'>
         <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: "B Yekan";
+                /*font-family: "B Yekan";*/
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
