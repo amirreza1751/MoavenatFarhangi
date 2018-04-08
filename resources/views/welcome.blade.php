@@ -75,7 +75,7 @@
                         <a href="{{ url('/home') }}">خانه</a>
                     @else
                         <a href="{{ route('login') }}">ورود</a>
-                        <a href="{{ route('register') }}">ثبت‌نام</a>
+{{--                        <a href="{{ route('register') }}">ثبت‌نام</a>--}}
                     @endauth
                 </div>
             @endif
