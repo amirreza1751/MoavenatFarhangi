@@ -150,7 +150,7 @@
 
                                 <tr>
                                     <td>داور ششم</td>
-                                    <td class="text-center"><input id="1-5" type="text" class="text-center" value="@if($referees['davar6']->count() != 0){{$referees['davar5'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
+                                    <td class="text-center"><input id="1-5" type="text" class="text-center" value="@if($referees['davar6']->count() != 0){{$referees['davar6'][0]->final_score}} @else {{"-"}}  @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['davar6']->count() != 0){{$referees['davar6'][1]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['davar6']->count() != 0){{$referees['davar6'][2]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
                                     <td class="text-center"><input type="text" class="text-center" value="@if($referees['davar6']->count() != 0){{$referees['davar6'][3]->final_score}} @else {{"-"}} @endif" style="width: 50px"></td>
