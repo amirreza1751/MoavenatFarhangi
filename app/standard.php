@@ -9,7 +9,7 @@ class standard extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
-    protected $fillable = ['st_name', 'final_score', 'st_coefficient', 'project_id', 'user_id'];
+    protected $fillable = ['st_name', 'final_score', 'st_coefficient', 'is_final_judgment', 'project_id', 'user_id'];
     protected $table = 'standards';
 
     public function project()

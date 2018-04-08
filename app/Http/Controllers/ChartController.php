@@ -9,7 +9,6 @@ class ChartController extends Controller
 {
     public function showCharts(){
         $counter['amuzeshi'] = project::where('type', 'آموزشی')->get()->count();
-        $counter['pajuheshi'] = project::where('type', 'پژوهشی')->get()->count();
         $counter['tarviji'] = project::where('type', 'ترویجی')->get()->count();
         return view('charts', compact('counter'));
     }

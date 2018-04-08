@@ -32,14 +32,14 @@
 
             <div class="card">
                 <div class="card-header text-right">
-                    <div class="float-right">داوری طرح</div>
+                    <div class="float-right">داوری طرح {{ $project->name }}</div>
                     <div class="float-left"><a href="{{url('/projects')}}"> بازگشت </a> </div>
                 </div>
                 <div class="card-body">
 
+
                     <form method="POST" action="/projects/judgement/{{ $project->id }}">
                         @csrf
-
                         <table class="table text-center table-responsive-sm" dir="rtl">
                             <thead class="table-light">
                             <tr>
@@ -51,8 +51,8 @@
                             <tbody>
                             <tr id="btn" class="bg-primary2">
                                 <td><b><u>کارتیمی</u></b></td>
-                                <td><input readonly name="teami1[st_coefficient]" id="txt1" type="text" class="form-control text-center " value="1" placeholder=""></td>
-                                <td><input readonly name="teami1[final_score]" id="txt2" type="text" class="form-control text-center" value="" placeholder=""></td>
+                                <td><input readonly required name="teami1[st_coefficient]" id="txt1" type="text" class="form-control text-center " value="1" placeholder=""></td>
+                                <td><input readonly required name="teami1[final_score]" id="txt2" type="text" class="form-control text-center" value="" placeholder=""></td>
                             </tr>
 
                                 <tr class="bg-primary3">
@@ -322,13 +322,30 @@
 
                             </tbody>
                         </table>
-                        {{--<button  class=" btn btn-block ">محاسبه‌ی نمرات</button>--}}
+
+
+                        @if ($errors->any())
+                            <span class="invalid-feedback">
+                                @foreach($errors->all() as $error)
+                                    <p>{{ $error }}</p>
+                                @endforeach
+                            </span>
+                        @endif
+
 
 
 
                         <div class="form-group row mb-1">
                             <div class="col-md-6 offset-md-3">
-                                <button id="button1" type="submit" class="btn btn-primary btn-block">
+                        <span id="button1" class=" btn btn-info btn-block">محاسبه‌ی نمرات</span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row mb-1">
+                            <div class="col-md-6 offset-md-3">
+                                <button  type="submit" class="btn btn-primary btn-block">
                                     {{ __('ثبت داوری') }}
                                 </button>
                             </div>

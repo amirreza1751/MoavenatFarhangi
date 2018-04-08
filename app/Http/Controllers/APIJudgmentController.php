@@ -8,6 +8,7 @@ use App\project;
 use App\standard;
 use App\subScore;
 use App\subScoreL2;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -156,4 +157,15 @@ class APIJudgmentController extends Controller
     public function test_method( Request $request){
 
     }
+
+    public function get_grades( Request $request){
+        $proj_id = $request['proj_id'];
+        $ref_name = $request['ref_name'];
+        $st_name = $request['st_name'];
+        $ref_id = User::where('name', $ref_name)->first()->id;
+        $scores = standard::with('subScore')->with('subScore.subScoreL2')->where('project_id', $proj_id)->where('user_id', $ref_id)->where('st_name', $st_name)->get();
+        return $scores;
+    }
+
+
 }

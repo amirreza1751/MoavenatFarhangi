@@ -51,6 +51,7 @@ Route::get('/forums/destroy_staff/{executiveStaff}', 'API\APIForumController@des
 Route::get('/grade_index', 'API\APIJudgmentController@grade_index');
 Route::get('/grade_index/referee', 'API\APIJudgmentController@grade_index_referee');
 Route::get('/judgment/set_grade', 'API\APIJudgmentController@set_grade');
+Route::get('/judgment/get_grades', 'API\APIJudgmentController@get_grades');
 
 
 

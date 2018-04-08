@@ -51,9 +51,6 @@
                         <td colspan="1">
                         <select name="forum_name" id="" class="custom-select">
                         <option selected  value="{{$project->forum->name}}">{{$project->forum->name}}</option>
-                        @foreach($forums as $forum)
-                        <option value="{{$forum->name}}">{{$forum->name}}</option>
-                        @endforeach
                         </select>
                         </td>
                         <td colspan="1">مکان برگزاری:</td>
@@ -84,66 +81,58 @@
                         <td >سطح برگزاری</td>
                         <td >
                         <select name="level" id="" class="custom-select">
-                        <option selected disabled value="">انتخاب کنید.</option>
-                        <option value="دانشگاهی">دانشگاهی</option>
-                        <option value="استانی">استانی</option>
-                        <option value="ملی">ملی</option>
-                        <option value="بین‌المللی">بین‌المللی</option>
+                        <option selected  value="">{{$project->level}}</option>
                         </select>
                         </td>
                         </tr>
 
                         <tr>
                         <td scope="row">هدف و ضرورت اجرای طرح</td>
-                        <td colspan="5"><textarea name="purpose" id="" cols="30" rows="8" class="form-control"></textarea></td>
+                        <td colspan="5"><textarea name="purpose" id="" cols="30" rows="8" class="form-control">{{$project->purpose}}</textarea></td>
                         </tr>
 
                         <tr>
                         <td scope="row">پیش بینی تعداد میهمان یا شرکت کننده:</td>
-                        <td ><input type="number" name="capacity" min="0"  class="form-control"></td>
+                        <td ><input type="number" name="capacity" min="0" value="{{$project->capacity}}"  class="form-control"></td>
                         <td scope="row">مجموع ساعات:</td>
-                        <td ><input type="number" name="total_hours" min="0"  class="form-control"></td>
+                        <td ><input type="number" name="total_hours" min="0" value="{{$project->total_hours}}" class="form-control"></td>
                         </tr>
                         <tr>
                         <td scope="row">استاد یا سخنران (به همراه رزومه و شماره تماس و ایمیل):</td>
-                        <td colspan="5"><textarea name="master" id="" cols="30" rows="5" class="form-control"></textarea></td>
+                        <td colspan="5"><textarea name="master" id="" cols="30" rows="5"   class="form-control"> {{$project->master}} </textarea></td>
                         </tr>
                         <tr>
                         <td scope="row">توضیحات:</td>
-                        <td colspan="5"><textarea name="description" id="" cols="30" rows="5" class="form-control"></textarea></td>
+                        <td colspan="5"><textarea name="description" id="" cols="30" rows="5" class="form-control"> {{$project->description}}</textarea></td>
                         </tr>
                         <tr>
                         <td scope="row">برنامه های جانبی:</td>
-                        <td colspan="5"><textarea name="sideway_programs" id="" cols="30" rows="5" class="form-control"></textarea></td>
+                        <td colspan="5"><textarea name="sideway_programs" id="" cols="30" rows="5" class="form-control"> {{$project->sideway_programs}}</textarea></td>
                         </tr>
                         <tr>
                         <td scope="row">نوآوری:</td>
-                        <td colspan="5"><textarea name="innovation" id="" cols="30" rows="5" class="form-control"></textarea></td>
+                        <td colspan="5"><textarea name="innovation" id="" cols="30" rows="5" class="form-control">{{$project->innovation}}</textarea></td>
                         </tr>
                         <tr>
                         <td scope="row">نام حامیان مالی و میزان و نوع حمایت آنها:</td>
-                        <td colspan="5"><textarea name="sponsors" id="" cols="30" rows="5" class="form-control"></textarea></td>
+                        <td colspan="5"><textarea name="sponsors" id="" cols="30" rows="5" class="form-control">{{$project->sponsors}}</textarea></td>
                         </tr>
                         <tr>
                         <td scope="row">ریز برنامه ها (زمانبندی):</td>
-                        <td colspan="5"><textarea name="detailed_programs" id="" cols="30" rows="5" class="form-control"></textarea></td>
+                        <td colspan="5"><textarea name="detailed_programs" id="" cols="30" rows="5" class="form-control">{{$project->detailed_programs}}</textarea></td>
                         </tr>
 
                         <tr>
                         <td scope="row">نظر کارشناس انجمن های علمی دانشجویی:</td>
                         <td >
                         <select name="expert_sign" id="" class="custom-select">
-                        <option selected disabled value=""></option>
-                        <option value="آقای زیبایی">آقای زیبایی</option>
-                        <option value="آقای اکبرزاده">آقای اکبرزاده</option>
+                        <option selected  value="{{$project->expert_sign}}">{{$project->expert_sign}}</option>
                         </select>
                         </td>
                         <td scope="row">نظر و تایید مدیر امور فرهنگی</td>
                         <td >
                         <select name="manager_sign" id="" class="custom-select">
-                        <option selected disabled value=""></option>
-                        <option value="آقای دکتر بانشی">آقای دکتر بانشی</option>
-                        <option value="آقای دکتر هوشمند">آقای دکتر هوشمند</option>
+                        <option selected  value="{{$project->manager_sign}}">{{$project->manager_sign}}</option>
                         </select>
                         </td>
                         </tr>

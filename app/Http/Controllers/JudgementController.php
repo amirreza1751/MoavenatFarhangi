@@ -21,6 +21,11 @@ class JudgementController extends Controller
         else
             return "not matched.";
     }
+
+
+
+
+
     public function index_grades($id){
 //        $referees = User::with( 'role', 'standard')->whereHas('standard', function ($q) use ($id){
 //            $q->where('standards.project_id', $id);
@@ -39,17 +44,25 @@ class JudgementController extends Controller
         $referees['mirzayi'] = DB::table('users')->join('roles', 'users.role_id', '=', 'roles.id')->where('users.name', 'سارا میرزایی')
             ->join('standards', 'users.id', '=', 'standards.user_id')->where('standards.project_id', '=', $id)->select('users.name as username', 'roles.name as rolename', 'standards.*')->get();
 
-        $referees['kamari'] = DB::table('users')->join('roles', 'users.role_id', '=', 'roles.id')->where('users.name', 'علیرضا کمری')
-            ->join('standards', 'users.id', '=', 'standards.user_id')->where('standards.project_id', '=', $id)->select('users.name as username', 'roles.name as rolename', 'standards.*')->get();
-
         $referees['jafari'] = DB::table('users')->join('roles', 'users.role_id', '=', 'roles.id')->where('users.name', 'پریسا شریعت جعفری')
             ->join('standards', 'users.id', '=', 'standards.user_id')->where('standards.project_id', '=', $id)->select('users.name as username', 'roles.name as rolename', 'standards.*')->get();
 
+        $referees['davar5'] = DB::table('users')->join('roles', 'users.role_id', '=', 'roles.id')->where('users.name', 'داور پنجم')
+            ->join('standards', 'users.id', '=', 'standards.user_id')->where('standards.project_id', '=', $id)->select('users.name as username', 'roles.name as rolename', 'standards.*')->get();
 
-//return $referees['pashm']->count();
+        $referees['davar6'] = DB::table('users')->join('roles', 'users.role_id', '=', 'roles.id')->where('users.name', 'داور ششم')
+            ->join('standards', 'users.id', '=', 'standards.user_id')->where('standards.project_id', '=', $id)->select('users.name as username', 'roles.name as rolename', 'standards.*')->get();
 
 
-        return view('finalGrades', compact('referees'));
+        $referees['nahayi'] = DB::table('users')->join('roles', 'users.role_id', '=', 'roles.id')->where('users.name', 'محمد پشم فروش')
+            ->join('standards', 'users.id', '=', 'standards.user_id')->where('standards.project_id', '=', $id)->where('standards.is_final_judgment', '=', 1)->select('users.name as username', 'roles.name as rolename', 'standards.*')->get();
+
+
+        $project = project::find($id);
+//return $referees['nahayi'];
+
+
+        return view('finalGrades', compact('referees', 'project'));
 //        $counter = 0;
 //        $i= $counter;
 ////        while($i<$referees->count()){
@@ -74,10 +87,124 @@ class JudgementController extends Controller
 //        return $referees[1]->username;
 //        $result[0] =
 
-        return $referees;
+//        return $referees;
     }
 
+
+    public function final_insert_grade($id, Request $request){
+        $user_id = Auth::user()->id;
+        $result = standard::where('project_id', $id)->where('user_id', $user_id)->where('is_final_judgment', 1)->first();
+
+        if ($result != null){
+//            return redirect('/projects');
+            return redirect('/projects?status=duplicate');
+        }
+        standard::create([
+            'st_name' => 'کار تیمی',
+            'st_coefficient' => '1',
+            'final_score' => $request['kare_teami'],
+            'project_id' => $id,
+            'user_id' => $user_id,
+            'is_final_judgment' => 1
+
+        ]);
+
+        standard::create([
+            'st_name' => 'سطح برگزاری',
+            'st_coefficient' => '1',
+            'final_score' => $request['level'],
+            'project_id' => $id,
+            'user_id' => $user_id,
+            'is_final_judgment' => 1
+        ]);
+
+        standard::create([
+            'st_name' => 'تبلیغات',
+            'st_coefficient' => '1',
+            'final_score' => $request['tablighat'],
+            'project_id' => $id,
+            'user_id' => $user_id,
+            'is_final_judgment' => 1
+        ]);
+
+        standard::create([
+            'st_name' => 'جذب مخاطب',
+            'st_coefficient' => '1',
+            'final_score' => $request['jazb_mokhatab'],
+            'project_id' => $id,
+            'user_id' => $user_id,
+            'is_final_judgment' => 1
+        ]);
+
+        standard::create([
+            'st_name' => 'مدت زمان برگزاری',
+            'st_coefficient' => '1',
+            'final_score' => $request['modat_zaman_bargozari'],
+            'project_id' => $id,
+            'user_id' => $user_id,
+            'is_final_judgment' => 1
+        ]);
+
+        standard::create([
+            'st_name' => 'نوآوری و ابتکار',
+            'st_coefficient' => '1',
+            'final_score' => $request['innovation'],
+            'project_id' => $id,
+            'user_id' => $user_id,
+            'is_final_judgment' => 1
+        ]);
+
+        standard::create([
+            'st_name' => 'حامیان مالی و رفاهی',
+            'st_coefficient' => '1',
+            'final_score' => $request['sponsors'],
+            'project_id' => $id,
+            'user_id' => $user_id,
+            'is_final_judgment' => 1
+        ]);
+
+        standard::create([
+            'st_name' => 'مدعوین ویژه',
+            'st_coefficient' => '1',
+            'final_score' => $request['madovin'],
+            'project_id' => $id,
+            'user_id' => $user_id,
+            'is_final_judgment' => 1
+        ]);
+
+        standard::create([
+            'st_name' => 'برنامه های جانبی',
+            'st_coefficient' => '1',
+            'final_score' => $request['barname_janebi'],
+            'project_id' => $id,
+            'user_id' => $user_id,
+            'is_final_judgment' => 1
+        ]);
+
+        standard::create([
+            'st_name' => 'گواهی',
+            'st_coefficient' => '1',
+            'final_score' => $request['govahi'],
+            'project_id' => $id,
+            'user_id' => $user_id,
+            'is_final_judgment' => 1
+        ]);
+
+
+        $final_grade = $request['kare_teami'] + $request['level'] + $request['tablighat'] +  + $request['jazb_mokhatab'] + $request['modat_zaman_bargozari'] + $request['innovation'] + $request['sponsors'] + $request['madovin'] + $request['barname_janebi'] + $request['govahi'];
+        $selected_project = project::find($id);
+        $selected_project->grade = $final_grade;
+        $selected_project->save();
+
+        return redirect('/projects/finalJudge/'.$id);
+    }
+
+
+
     public function insert_grade(Request $request, $id){
+        $this->validate(request(), [
+            'teami1.final_score' => 'required'
+        ]);
         $user_id = Auth::user()->id;
         $result = standard::where('project_id', $id)->where('user_id', $user_id)->first();
 
@@ -98,13 +225,13 @@ class JudgementController extends Controller
                 'subject' => 'معیار اول',
                 'coefficient' => $request['meyarAval2']['coefficient'],
                 'sub_score' => $request['meyarAval2']['sub_score'],
-                'standard_id' => $standard->id,
+                'standard_id' => $standard->id
             ]);
         $sub_score = subScore::create([
             'subject' => 'معیار دوم',
             'coefficient' => $request['meyarDovom2']['coefficient'],
             'sub_score' => $request['meyarDovom2']['sub_score'],
-            'standard_id' => $standard->id,
+            'standard_id' => $standard->id
         ]);
         subScoreL2::create([
             'subject_l2' => 'قبل از برگزاری',
@@ -151,26 +278,26 @@ class JudgementController extends Controller
             'subject' => 'فضای مجازی',
             'coefficient' => $request['faza2']['coefficient'],
             'sub_score' => $request['faza2']['sub_score'],
-            'standard_id' => $standard->id,
+            'standard_id' => $standard->id
         ]);
 
         subScore::create([
             'subject' => 'پوستر و بنر و استند',
             'coefficient' => $request['poster2']['coefficient'],
             'sub_score' => $request['poster2']['sub_score'],
-            'standard_id' => $standard->id,
+            'standard_id' => $standard->id
         ]);
         subScore::create([
             'subject' => 'فایل اصلی',
             'coefficient' => $request['file2']['coefficient'],
             'sub_score' => $request['file2']['sub_score'],
-            'standard_id' => $standard->id,
+            'standard_id' => $standard->id
         ]);
         subScore::create([
             'subject' => 'خوابگاه و محیط‌های دانشگاهی',
             'coefficient' => $request['khabgah2']['coefficient'],
             'sub_score' => $request['khabgah2']['sub_score'],
-            'standard_id' => $standard->id,
+            'standard_id' => $standard->id
         ]);
         subScore::create([
             'subject' => 'آیدی کارت',
@@ -182,13 +309,13 @@ class JudgementController extends Controller
             'subject' => 'بروشور',
             'coefficient' => $request['broshur2']['coefficient'],
             'sub_score' => $request['broshur2']['sub_score'],
-            'standard_id' => $standard->id,
+            'standard_id' => $standard->id
         ]);
         subScore::create([
             'subject' => 'دعوتنامه اساتید',
             'coefficient' => $request['davatname2']['coefficient'],
             'sub_score' => $request['davatname2']['sub_score'],
-            'standard_id' => $standard->id,
+            'standard_id' => $standard->id
         ]);
 
         standard::create([
@@ -204,7 +331,7 @@ class JudgementController extends Controller
             'st_coefficient' => $request['modat1']['st_coefficient'],
             'final_score' => $request['modat1']['final_score'],
             'project_id' => $id,
-            'user_id' => $user_id
+            'user_id' => $user_id,
         ]);
 
         $standard = standard::create([
@@ -219,6 +346,7 @@ class JudgementController extends Controller
             'coefficient' => $request['darOnvan2']['coefficient'],
             'sub_score' => $request['darOnvan2']['sub_score'],
             'standard_id' => $standard->id,
+
         ]);
         subScore::create([
             'subject' => 'در محتوا',

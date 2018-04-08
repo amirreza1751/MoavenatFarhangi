@@ -25,6 +25,7 @@ Route::post('/projects/new', 'ProjectController@store');
 Route::post('/projects/staffs/new', 'StaffController@store');
 Route::post('/projects/costs/new', 'CostController@store');
 Route::post('/projects/judgement/{id}', 'JudgementController@insert_grade')->middleware('auth:web');
+Route::post('/projects/finalJudgement/{id}', 'JudgementController@final_insert_grade')->middleware('auth:web');
 
 
 Route::post('/colleges/new', 'CollegeController@store');

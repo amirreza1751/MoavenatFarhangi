@@ -29,6 +29,7 @@
                             <thead class="table-dark">
                                 <tr class="text-center">
                                     <td>ردیف</td>
+                                    <td>شناسه</td>
                                     <td>عنوان طرح</td>
                                     <td>نوع طرح</td>
                                     <td>مکان برگزاری</td>
@@ -46,6 +47,7 @@
                         @foreach($projects as $project)
                                 <tr class="text-center clickable-row @if($project->grade != null) {{ "alert-success" }} @endif" style="cursor: pointer;" data-href='{{url('/projects')}}{{"/" . $project->id}}'>
                                     <td>{{$i++}}</td>
+                                    <td>{{ $project->id }}</td>
                                     <td>{{ $project->name }}</td>
                                     <td>{{ $project->type }}</td>
                                     <td>{{ $project->place }}</td>
