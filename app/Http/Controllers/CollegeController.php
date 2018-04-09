@@ -23,7 +23,7 @@ class CollegeController extends Controller
 //        return college::create([
 //            'name' => $request['name']
 //        ])->toSql();
-        return redirect('/colleges/add');
+        return redirect('/colleges');
 
     }
 

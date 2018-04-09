@@ -36,7 +36,7 @@ class JudgementController extends Controller
 //            $q->where('standards.project_id', 1);
 //        }])->get();
         $referees['pashm'] = DB::table('users')->join('roles', 'users.role_id', '=', 'roles.id')->where('users.name', 'محمد پشم فروش')
-            ->join('standards', 'users.id', '=', 'standards.user_id')->where('standards.project_id', '=', $id)->select('users.name as username', 'roles.name as rolename', 'standards.*')->get();
+            ->join('standards', 'users.id', '=', 'standards.user_id')->where('standards.project_id', '=', $id)->where('standards.is_final_judgment', '=', null)->select('users.name as username', 'roles.name as rolename', 'standards.*')->get();
 
         $referees['fazeli'] = DB::table('users')->join('roles', 'users.role_id', '=', 'roles.id')->where('users.name', 'محمد فاضلی')
             ->join('standards', 'users.id', '=', 'standards.user_id')->where('standards.project_id', '=', $id)->select('users.name as username', 'roles.name as rolename', 'standards.*')->get();

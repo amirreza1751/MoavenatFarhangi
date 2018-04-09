@@ -21,6 +21,7 @@
                     <div class="card-header text-right" >
                         <div class="float-right">لیست دانشکده‌ها</div>
                         <div class="float-left"><a href="{{url('/home')}}"> بازگشت </a> </div>
+                        <div class="float-left pl-4"><a href="{{url('/colleges/add')}}"> اضافه کردن دانشکده </a> </div>
                         {{--@if($role == 'داور' || $role == 'دبیر کمیته علمی') <div class="float-left pl-4"><a href="{{url('/charts')}}">نمودارها</a> </div> @endif--}}
                     </div>
                         <?php $i=1; ?>

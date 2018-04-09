@@ -59,6 +59,6 @@ class StaffController extends Controller
                 $staff->save();
             }
         }
-        return redirect('/home');
+        return redirect('/forums');
     }
 }

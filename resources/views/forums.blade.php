@@ -19,8 +19,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-right" >
-                        <div class="float-right">لیست دانشکده‌ها</div>
+                        <div class="float-right">لیست انجمن‌ها</div>
                         <div class="float-left"><a href="{{url('/home')}}"> بازگشت </a> </div>
+                        <div class="float-left pl-4"><a href="{{url('/forums/add')}}"> اضافه کردن انجمن علمی </a> </div>
                         {{--@if($role == 'داور' || $role == 'دبیر کمیته علمی') <div class="float-left pl-4"><a href="{{url('/charts')}}">نمودارها</a> </div> @endif--}}
                     </div>
                         <?php $i=1; ?>
