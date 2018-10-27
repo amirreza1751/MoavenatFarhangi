@@ -11,7 +11,7 @@
     <title>معاونت فرهنگی دانشگاه شهید چمران اهواز</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
 
 
     <!-- Fonts -->
@@ -19,17 +19,37 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+{{--    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <style>body { font-family: BYekan,'BYekan',tahoma;}</style>
     <link href='http://www.fontonline.ir/css/BYekan.css' rel='stylesheet' type='text/css'>
 
+
+    <link rel="stylesheet" href="{{asset('css/kamadatepicker.css')}}">
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="{{asset('js/kamadatepicker.js')}}"></script>
+
     @yield('head')
 
 
-
 </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -52,14 +72,14 @@
                         <!-- Authentication Links -->
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('ورود') }}</a></li>
-{{--                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('ثبت نام') }}</a></li>--}}
+                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('ثبت نام') }}</a></li>
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} {{ "_" . Auth::user()->role()->first()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -81,6 +101,7 @@
             @yield('content')
         </main>
     </div>
-
+    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--}}
+    @yield('scripts')
 </body>
 </html>
