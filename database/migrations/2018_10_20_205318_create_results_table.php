@@ -15,19 +15,15 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('factor_id');
-            $table->integer('project_id');
+//            $table->integer('factor_id');
+//            $table->integer('project_id');
             $table->float('grade');
-            $table->integer('user_id');
+//            $table->integer('user_id');
             $table->boolean('is_final_judge');
             $table->timestamps();
         });
 
-        Schema::create('form_factors', function (Blueprint $table) {
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('factor_id')->references('id')->on('factors')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
-        });
+
     }
 
     /**
