@@ -19,6 +19,14 @@ class CreateStaffProjectTable extends Migration
             $table -> string('post');
             $table->softDeletes();
         });
+
+        Schema::table('staff_projects', function (Blueprint $table) {
+            $table->integer('staff_id')->unsigned();
+            $table->foreign('staff_id')->references('id')->on('executive_staffs')->onDelete('restrict')->onUpdate('cascade');
+
+            $table->integer('project_id')->unsigned();
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('restrict')->onUpdate('cascade');
+        });
     }
 
     /**

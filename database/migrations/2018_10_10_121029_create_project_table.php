@@ -40,6 +40,18 @@ class CreateProjectTable extends Migration
             $table->softDeletes();
         });
 
+        Schema::table('projects', function (Blueprint $table) {
+            $table->integer('forum_id')->unsigned();
+            $table->foreign('forum_id')->references('id')->on('forums')->onDelete('restrict')->onUpdate('cascade');
+        });
+
+        Schema::table('projects', function (Blueprint $table) {
+            $table->date('start_date');
+            $table->time('start_time');
+            $table->date('end_date')->nullable();
+            $table->time('end_time')->nullable();
+            $table->Integer('total_hours')->nullable();
+        });
     }
 
     /**

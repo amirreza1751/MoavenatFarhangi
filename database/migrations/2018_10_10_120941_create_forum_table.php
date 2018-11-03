@@ -21,6 +21,12 @@ class CreateForumTable extends Migration
             $table->text('forum_statute')->nullable();
             $table->softDeletes();
         });
+        Schema::table('forums', function (Blueprint $table) {
+            $table->integer('college_id')->unsigned();
+            $table->foreign('college_id')->references('id')->on('colleges')->onDelete('restrict')->onUpdate('cascade');
+        });
+
+
     }
 
     /**

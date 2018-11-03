@@ -18,6 +18,10 @@ class CreateCostTable extends Migration
             
             $table->timestamps();
         });
+        Schema::table('costs', function (Blueprint $table) {
+            $table->integer('project_id')->unsigned();
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('restrict')->onUpdate('cascade');
+        });
     }
 
     /**

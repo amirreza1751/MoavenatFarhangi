@@ -30,7 +30,6 @@ class APILoginController extends Controller
     public function getToken(Request $request)
     {
 
-
         //user credentials in request
         $email = $request->input('username');
         $password = $request->input('password');
