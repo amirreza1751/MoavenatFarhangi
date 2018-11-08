@@ -53,7 +53,7 @@ class APIForumController extends Controller
         }
 
 
-        return response()->json([ 'status'=>200 ,'forum'=>$forum]);
+        return response()->json(['status'=>200 ,'forum'=>$forum]);
     }
 
     /**
@@ -78,7 +78,8 @@ class APIForumController extends Controller
     public function update(Forum $forum, Request $request)
     {
         $forum->update($request->all());
-        return redirect('/api/forums');
+        return response()->json(['status'=>200 ,'forum'=>$forum]);
+//        return redirect('/api/forums');
     }
 
     /**
@@ -93,7 +94,8 @@ class APIForumController extends Controller
     public function destroy(Forum $forum)
     {
         $forum->delete();
-        return redirect('/api/forums');
+        return response()->json(['status'=>200]);
+//        return redirect('/api/forums');
     }
     public function add_staff(Request $request)
     {
@@ -116,6 +118,7 @@ class APIForumController extends Controller
     public function destroy_staff(executiveStaff $executiveStaff)
     {
         $executiveStaff->delete();
-        return redirect('/api/forums');
+        return response()->json(['status'=>200]);
+//        return redirect('/api/forums');
     }
 }
