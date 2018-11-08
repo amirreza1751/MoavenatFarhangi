@@ -20,6 +20,7 @@ class CreateFactorsTable extends Migration
             $table->integer('parent');
             $table->integer('level');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

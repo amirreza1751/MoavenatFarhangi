@@ -39,7 +39,7 @@ class APIForumController extends Controller
             'college_id' => $college->id
         ]);
 
-        for ($i=1; $i< sizeof($request); $i++) {
+        for ($i=1; $i<sizeof($request); $i++) {
             executiveStaff::create([
                 'fname' => $request[$i]['fname'],
                 'lname' => $request[$i]['lname'],
@@ -52,9 +52,8 @@ class APIForumController extends Controller
             ]);
         }
 
-        return redirect('/api/forums');
-//        return $college_name . $college[0]->id;
-//        return response()->json($college);
+
+        return response()->json([ 'status'=>200 ,'forum'=>$forum]);
     }
 
     /**

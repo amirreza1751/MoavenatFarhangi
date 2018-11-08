@@ -16,6 +16,7 @@ class CreateFormFactorsTable extends Migration
         Schema::create('form_factors', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->softDeletes();
         });
 
     }

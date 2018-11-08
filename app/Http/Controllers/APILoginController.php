@@ -43,7 +43,7 @@ class APILoginController extends Controller
                 $request->request->add([
                     'grant_type' => 'password',
                     'client_id' => 1,
-                    'client_secret' => "ZRkWXnYt3CzDUrFIEvERnfCyOwApubatcHw2f9Lt",
+                    'client_secret' => "OuX4akugMw6peNShLsg0LqqgoBTIcnqZF3B4d8Og",
                     'scope' => '*',
                 ]);
                 $tokenRequest = Request::create(

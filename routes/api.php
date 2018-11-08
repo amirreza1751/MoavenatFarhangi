@@ -14,9 +14,6 @@ use Illuminate\Http\Request;
 */
 Route::get('/login', 'API\APILoginController@getToken'); // bayad post beshe!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-/*forums*/
-Route::post('/forums', 'API\APIForumController@index');
-Route::post('/forums/add', 'API\APIForumController@store');
 
 
 /*colleges*/
@@ -27,7 +24,7 @@ Route::patch('/colleges/edit/{college}', 'API\APICollegeController@update');//id
 
 /*forums*/
 Route::get('/forums', 'API\APIForumController@index');
-Route::get('/forums/add', 'API\APIForumController@store');
+Route::post('/forums/add', 'API\APIForumController@store');
 Route::get('/forums/add_staff', 'API\APIForumController@add_staff');
 Route::get('/forums/remove/{forum}', 'API\APIForumController@destroy');
 Route::patch('/forums/edit/{forum}', 'API\APIForumController@update');

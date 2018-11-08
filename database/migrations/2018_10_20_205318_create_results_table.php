@@ -15,12 +15,10 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->increments('id');
-//            $table->integer('factor_id');
-//            $table->integer('project_id');
             $table->float('grade');
-//            $table->integer('user_id');
             $table->boolean('is_final_judge');
             $table->timestamps();
+            $table->softDeletes();
         });
 
 
