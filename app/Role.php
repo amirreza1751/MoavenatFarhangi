@@ -9,6 +9,7 @@ class Role extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
+    protected $fillable = ['name'];
     protected $table = 'roles';
 
     public function users()
