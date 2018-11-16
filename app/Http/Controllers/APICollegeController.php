@@ -29,7 +29,6 @@ class APICollegeController extends Controller
     {
         College::create([
             'name' => $request['name'],
-
         ]);
         return redirect('/api/colleges');
 //        return $request->all();
@@ -70,6 +69,6 @@ class APICollegeController extends Controller
     public function destroy(College $college)
     {
         $college->delete();
-        return redirect('/api/colleges');
+        return $college;
     }
 }

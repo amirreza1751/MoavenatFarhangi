@@ -12,15 +12,31 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/login', 'API\APILoginController@getToken'); // bayad post beshe!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('login', 'AuthController@login');
+    Route::post('signup', 'AuthController@signup');
+  
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('logout', 'AuthController@logout');
+        Route::get('user', 'AuthController@user');
+    });
+});
 
 
 /*colleges*/
-Route::get('/colleges', 'API\APICollegeController@index');
-Route::get('/colleges/add', 'API\APICollegeController@store');
-Route::get('/colleges/remove/{college}', 'API\APICollegeController@destroy');
-Route::patch('/colleges/edit/{college}', 'API\APICollegeController@update');//id bayad begire
+Route::group([
+    'prefix' => 'colleges',
+    // 'middleware' =>'auth:api'
+],function(){
+    Route::get('/', 'API\APICollegeController@index');
+    Route::post('/add', 'API\APICollegeController@store');
+    Route::get('/remove/{college}', 'API\APICollegeController@destroy');
+    Route::patch('/edit/{college}', 'API\APICollegeController@update');//id bayad begire
+});
 
 /*forums*/
 Route::get('/forums', 'API\APIForumController@index');
