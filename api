@@ -1,0 +1,8 @@
+api list:
+
+1. login
+
+method: POST
+endpoint: site/api/login
+inputs (arguments): [ 'username' => '' , 'password' => '']
+outputs: output['access_token]
