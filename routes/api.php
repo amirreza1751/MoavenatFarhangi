@@ -58,12 +58,12 @@ Route::get('/projects/remove/{project}', 'API\ProjectController@destroy');
 Route::patch('/projects/edit/{project}', 'API\ProjectController@update');
 Route::patch('/projects/edit_cost/{cost}', 'API\ProjectController@update_cost');
 Route::get('/projects/add_staff', 'API\ProjectController@add_staff');
-Route::get('/projects/show_staff', 'API\ProjectController@show_staff');
+Route::get('/projects/{id}/show_staff', 'API\ProjectController@show_staff');
 Route::get('/projects/remove_staff', 'API\ProjectController@destroy_staff');
 Route::post('/projects/search', 'API\ProjectController@search');
 Route::post('/projects/show/{Project}', 'API\ProjectController@show');
 Route::get('/projects/add_cost', 'API\ProjectController@add_cost');
-Route::get('/projects/{project}/costs', 'API\ProjectController@indeost');
+Route::get('/projects/{id}/costs', 'API\ProjectController@index_cost');
 
 
 

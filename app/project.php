@@ -35,7 +35,7 @@ class project extends Model
         parent::boot();
 
         static::deleting(function ($project){
-            $project->executiveStaff()->delete();
+//            $project->executiveStaff()->delete();
             $project->costs()->delete();
         });
     }

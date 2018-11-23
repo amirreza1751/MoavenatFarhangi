@@ -21,7 +21,7 @@ class CreateExecutiveStaffTable extends Migration
             $table -> string('student_id');
             $table -> string('phone_number');
             $table -> string('field');
-            $table -> string('votes');
+            $table -> string('votes')->nullable();
             $table->softDeletes();
         });
     }

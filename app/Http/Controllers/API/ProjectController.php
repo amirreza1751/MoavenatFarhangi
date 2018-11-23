@@ -23,9 +23,17 @@ class ProjectController extends Controller
         $projects = project::all();
         return $projects;
     }
-    public function index_cost(Project $project)
+    public function index_cost($id)
     {
-        return response()->json($project->costs(),200);
+        $costs = project::findorFail($id)->costs()->get();
+        return response()->json($costs);
+    }
+
+    public function show_staff($id)
+    {
+        $staffs = project::findorFail($id)->executiveStaff()->get();
+        return response()->json($staffs);
+//        return response()->json($project->executiveStaff(),200);
     }
 
 
@@ -37,18 +45,37 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-
         $project = Project::create($request->all());
-
         return response()->json($project,200);
     }
 
     public function add_cost(Request $request)
     {
-
         $cost = cost::create($request->all());
         return response()->json($cost,200);
     }
+
+
+    public function add_staff(Request $request)
+    {
+        $exe_id = executiveStaff::create([
+            'fname' => $request['fname'],
+            'lname' => $request['lname'],
+            'student_id' => $request['student_id'],
+            'phone_number' => $request['phone_number'],
+            'field' => $request['field'],
+        ]);
+        staffProject::create([
+            'post' => $request['post'],
+            'staff_id' => $exe_id->id,
+            'project_id' => $request['project_id'],
+        ]);
+        return response()->json($exe_id,200);
+    }
+
+
+
+
 
 
     public function update_cost(cost $cost,Request $request)
@@ -103,6 +130,8 @@ class ProjectController extends Controller
         return $project;
     }
 
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -129,36 +158,11 @@ class ProjectController extends Controller
     public function destroy(project $project)
     {
         $project->delete();
+        staffProject::where('project_id', $project->id)->delete();
         return response()->json($project,200);
     }
 
-    public function add_staff(Request $request)
-    {
-        $exe_id = executiveStaff::create([
-            'fname' => $request['fname'],
-            'lname' => $request['lname']
-        ]);
-        staffProject::create([
-            'post' => $request['post'],
-            'staff_id' => $exe_id->id,
-            'project_id' => $request['project_id'],
-        ]);
-        return redirect('/api/projects');
-    }
 
-    public function show_staff(Request $request)
-    {
-        if (!($request->has('project_id')) || $request->project_id == 0) {
-            return response()->json('wrong id,bad request', 400);
-        }
-        $projecs = DB::table('projects')
-            ->join('staff_projects', 'project_id', '=', 'projects.id')
-            ->join('executive_staffs', 'executive_staffs.id', '=', 'staff_projects.staff_id')
-            ->select('executive_staffs.*', 'staff_projects.post')
-            ->get();
-
-        return response()->json($projecs);
-    }
 
     public function destroy_staff(Request $request)
     {
@@ -168,6 +172,6 @@ class ProjectController extends Controller
         if (!isset($executive_staffs->forum_id)) {
             $executive_staffs->delete();
         }
-        return response()->json($staff_project);
+        return response()->json($staff_project, 200);
     }
 }
