@@ -30,7 +30,7 @@ Route::group([
 /*colleges*/
 Route::group([
     'prefix' => 'colleges',
-    // 'middleware' =>'auth:api'
+    //'middleware' =>'auth:api'
 ],function(){
     Route::get('/', 'API\APICollegeController@index');
     Route::post('/add', 'API\APICollegeController@store');
@@ -39,19 +39,22 @@ Route::group([
 });
 
 /*forums*/
-Route::get('/forums', 'API\APIForumController@index');
-Route::post('/forums/add', 'API\APIForumController@store');
-Route::get('/forums/add_staff', 'API\APIForumController@add_staff');
-Route::get('/forums/remove/{forum}', 'API\APIForumController@destroy');
-Route::patch('/forums/edit/{forum}', 'API\APIForumController@update');
-Route::get('/forums/show_staff', 'API\APIForumController@show_staff');
-Route::get('/forums/destroy_staff/{executiveStaff}', 'API\APIForumController@destroy_staff');
-
-
+Route::group([
+    'prefix' =>'forums',
+        //'middleware' =>'auth:api'
+],function(){
+    Route::get('/', 'API\APIForumController@index');
+    Route::post('/add', 'API\APIForumController@store');
+    Route::post('/add_staff', 'API\APIForumController@add_staff');
+    Route::get('/remove/{forum}', 'API\APIForumController@destroy');
+    Route::patch('/edit/{forum}', 'API\APIForumController@update');
+    Route::get('/show_staff', 'API\APIForumController@show_staff');
+    Route::get('/destroy_staff/{executiveStaff}', 'API\APIForumController@destroy_staff');
+});
 
 
 //test
-Route::get('/test', 'API\APIJudgmentController@test_method');
+//Route::get('/test', 'API\APIJudgmentController@test_method');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
