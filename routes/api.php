@@ -15,14 +15,14 @@ use Illuminate\Http\Request;
 Route::group([
     'prefix' => 'auth'
 ], function () {
-    Route::post('login', 'AuthController@login');
-    Route::post('signup', 'AuthController@signup');
+    Route::post('login', 'API\AuthController@login');
+    Route::post('signup', 'API\AuthController@signup');
   
     Route::group([
       'middleware' => 'auth:api'
     ], function() {
-        Route::get('logout', 'AuthController@logout');
-        Route::get('user', 'AuthController@user');
+        Route::get('logout', 'API\AuthController@logout');
+        Route::get('user', 'API\AuthController@user');
     });
 });
 
@@ -32,20 +32,39 @@ Route::group([
     'prefix' => 'colleges',
     // 'middleware' =>'auth:api'
 ],function(){
-    Route::get('/', 'API\APICollegeController@index');
-    Route::post('/add', 'API\APICollegeController@store');
-    Route::get('/remove/{college}', 'API\APICollegeController@destroy');
-    Route::patch('/edit/{college}', 'API\APICollegeController@update');//id bayad begire
+    Route::get('/', 'API\CollegeController@index');
+    Route::post('/add', 'API\CollegeController@store');
+    Route::get('/remove/{college}', 'API\CollegeController@destroy');
+    Route::patch('/edit/{college}', 'API\CollegeController@update');//id bayad begire
 });
 
 /*forums*/
-Route::get('/forums', 'API\APIForumController@index');
-Route::post('/forums/add', 'API\APIForumController@store');
-Route::get('/forums/add_staff', 'API\APIForumController@add_staff');
-Route::get('/forums/remove/{forum}', 'API\APIForumController@destroy');
-Route::patch('/forums/edit/{forum}', 'API\APIForumController@update');
-Route::get('/forums/show_staff', 'API\APIForumController@show_staff');
-Route::get('/forums/destroy_staff/{executiveStaff}', 'API\APIForumController@destroy_staff');
+Route::get('/forums', 'API\ForumController@index');
+Route::get('/forums/{forum}', 'API\ForumController@show');
+Route::post('/forums/add', 'API\ForumController@store');
+Route::get('/forums/add_staff', 'API\ForumController@add_staff');
+Route::get('/forums/remove/{forum}', 'API\ForumController@destroy');
+Route::patch('/forums/edit/{forum}', 'API\ForumController@update');
+Route::get('/forums/show_staff', 'API\ForumController@show_staff');
+Route::get('/forums/destroy_staff/{executiveStaff}', 'API\umController@destroy_staff');
+
+
+
+
+/*projects*/
+Route::get('/projects', 'API\ProjectController@index');
+Route::get('/projects/add', 'API\ProjectController@store');
+Route::get('/projects/remove/{project}', 'API\ProjectController@destroy');
+Route::patch('/projects/edit/{project}', 'API\ProjectController@update');
+Route::patch('/projects/edit_cost/{cost}', 'API\ProjectController@update_cost');
+Route::get('/projects/add_staff', 'API\ProjectController@add_staff');
+Route::get('/projects/show_staff', 'API\ProjectController@show_staff');
+Route::get('/projects/remove_staff', 'API\ProjectController@destroy_staff');
+Route::post('/projects/search', 'API\ProjectController@search');
+Route::post('/projects/show/{Project}', 'API\ProjectController@show');
+Route::get('/projects/add_cost', 'API\ProjectController@add_cost');
+Route::get('/projects/{project}/costs', 'API\ProjectController@indeost');
+
 
 
 

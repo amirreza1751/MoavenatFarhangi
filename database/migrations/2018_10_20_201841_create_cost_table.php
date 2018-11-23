@@ -15,7 +15,12 @@ class CreateCostTable extends Migration
     {
         Schema::create('costs', function (Blueprint $table) {
             $table->increments('id');
-            
+            $table -> string('subject');
+            $table -> integer('unit')->nullable();
+            $table -> integer('requested_cost')->nullable();
+            $table -> integer('approved_cost')->nullable();
+            $table -> string('cost')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
         Schema::table('costs', function (Blueprint $table) {

@@ -25,13 +25,18 @@ class project extends Model
         return $this->hasMany('App\cost');
     }
 
-    public function standard()
-    {
-        return $this->hasMany('App\standard');
-    }
 
     public function executiveStaff()
     {
         return $this->belongsToMany('App\executiveStaff', 'staff_projects', 'project_id', 'staff_id');
+    }
+
+    public static function boot(){
+        parent::boot();
+
+        static::deleting(function ($project){
+            $project->executiveStaff()->delete();
+            $project->costs()->delete();
+        });
     }
 }

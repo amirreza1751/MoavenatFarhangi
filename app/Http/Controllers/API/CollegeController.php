@@ -6,7 +6,7 @@ use App\college;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class APICollegeController extends Controller
+class CollegeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class APICollegeController extends Controller
      */
     public function index()
     {
-        $college = College::all();
-        return $college;
+        $colleges = College::all();
+        return $colleges;
     }
 
     /**
@@ -27,22 +27,10 @@ class APICollegeController extends Controller
      */
     public function store(Request $request)
     {
-        College::create([
-            'name' => $request['name'],
-        ]);
-        return redirect('/api/colleges');
-//        return $request->all();
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $college=College::create($request->all());
+
+        return $college;
     }
 
     /**
@@ -55,8 +43,9 @@ class APICollegeController extends Controller
      */
     public function update(College $college, Request $request)
     {
+
         $college->update($request->all());
-        return redirect('/api/colleges');
+        return $college;
 
     }
 
