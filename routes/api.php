@@ -30,7 +30,7 @@ Route::group([
 /*colleges*/
 Route::group([
     'prefix' => 'colleges',
-    // 'middleware' =>'auth:api'
+    //'middleware' =>'auth:api'
 ],function(){
     Route::get('/', 'API\CollegeController@index');
     Route::post('/add', 'API\CollegeController@store');
@@ -66,11 +66,8 @@ Route::get('/projects/add_cost', 'API\ProjectController@add_cost');
 Route::get('/projects/{id}/costs', 'API\ProjectController@index_cost');
 
 
-
-
-
 //test
-Route::get('/test', 'API\APIJudgmentController@test_method');
+//Route::get('/test', 'API\APIJudgmentController@test_method');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
