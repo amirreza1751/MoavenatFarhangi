@@ -17,10 +17,15 @@ class CreateFactorsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->float('coefficient');
-            $table->integer('parent');
+
             $table->integer('level');
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::table('factors', function (Blueprint $table) {
+            $table->integer('parent')->unsigned()->nullable();
+            $table->foreign('parent')->references('id')->on('factors')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 

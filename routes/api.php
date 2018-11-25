@@ -66,6 +66,10 @@ Route::get('/projects/add_cost', 'API\ProjectController@add_cost');
 Route::get('/projects/{id}/costs', 'API\ProjectController@index_cost');
 
 
+/*factor-controller*/
+Route::post('/factors', 'API\FactorController@store');
+
+
 //test
 //Route::get('/test', 'API\APIJudgmentController@test_method');
 
