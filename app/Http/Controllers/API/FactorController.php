@@ -15,7 +15,8 @@ class FactorController extends Controller
      */
     public function index()
     {
-        //
+        $factors = Factor::with('children')->get();
+        return $factors;
     }
 
     /**

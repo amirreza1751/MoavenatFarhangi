@@ -67,7 +67,8 @@ Route::get('/projects/{id}/costs', 'API\ProjectController@index_cost');
 
 
 /*factor-controller*/
-Route::post('/factors', 'API\FactorController@store');
+Route::post('/factors/add', 'API\FactorController@store');
+Route::get('/factors', 'API\FactorController@index');
 
 
 //test

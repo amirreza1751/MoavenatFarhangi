@@ -16,7 +16,7 @@ class Factor extends Model
 
     public function children()
     {
-        return $this->hasMany('APP\Factor');
+        return $this->hasMany('APP\Factor', 'parent');
     }
 
     public function parent()
