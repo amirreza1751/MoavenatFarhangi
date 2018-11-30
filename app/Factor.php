@@ -18,7 +18,6 @@ class Factor extends Model
     {
         return $this->hasMany('APP\Factor', 'parent');
     }
-
     public function parent()
     {
         return $this->belongsTo('APP\Factor');

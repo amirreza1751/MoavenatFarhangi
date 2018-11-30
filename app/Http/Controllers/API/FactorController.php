@@ -16,7 +16,7 @@ class FactorController extends Controller
     public function index()
     {
         $factors = Factor::with('children')->get();
-        return $factors;
+        return response()->json($factors, 200);
     }
 
     /**
@@ -27,6 +27,12 @@ class FactorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            '*.name' => 'required',
+            '*.children.*.name' => 'required' ,
+            '*.children.*.children.*.name' => 'required'
+        ]);
+        $inserted_items = array();
         $request = $request->all();
 
         foreach ($request as $reqItem){
@@ -35,6 +41,7 @@ class FactorController extends Controller
                 'coefficient' => $reqItem['coefficient'],
                 'level' => '1'
             ]);
+            array_push($inserted_items, $p);
             if (count($reqItem['children']) > 0){
             $children1 = $reqItem['children'];
             foreach ($children1 as $child1){
@@ -44,22 +51,24 @@ class FactorController extends Controller
                         'parent' => $p->id,
                         'level' => '2'
                     ]);
+                array_push($inserted_items, $ch);
                     if (count($child1['children']) > 0){
                         $children2 = $child1['children'];
                         foreach ($children2 as $child2){
-                            Factor::create([
+                            $ch2 = Factor::create([
                                 'name' => $child2['name'],
                                 'coefficient' => $child2['coefficient'],
                                 'parent' => $ch->id,
                                 'level' => '3'
                             ]);
+                            array_push($inserted_items, $ch2);
                         }
                     }
                 }
             }
         }
 
-        return response()->json($p, 200);
+        return response()->json($inserted_items, 200);
     }
 
     /**

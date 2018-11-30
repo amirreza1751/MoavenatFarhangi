@@ -71,6 +71,11 @@ Route::post('/factors/add', 'API\FactorController@store');
 Route::get('/factors', 'API\FactorController@index');
 
 
+
+/*form-controller*/
+Route::post('/forms/add', 'API\FormController@store');
+
+
 //test
 //Route::get('/test', 'API\APIJudgmentController@test_method');
 
