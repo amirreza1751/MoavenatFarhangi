@@ -74,7 +74,15 @@ Route::get('/factors', 'API\FactorController@index');
 
 /*form-controller*/
 Route::post('/forms/add', 'API\FormController@store');
+Route::get('/forms/show/{id}', 'API\FormController@show');
 
+
+
+
+
+/*results */
+Route::post('/results/add', 'API\ResultControllerr@store');
+Route::post('/results/final_judge', 'API\ResultControllerr@final_judge');
 
 //test
 //Route::get('/test', 'API\APIJudgmentController@test_method');
