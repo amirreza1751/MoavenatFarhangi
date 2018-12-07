@@ -46,7 +46,7 @@ Route::get('/forums/add_staff', 'API\ForumController@add_staff');
 Route::get('/forums/remove/{forum}', 'API\ForumController@destroy');
 Route::patch('/forums/edit/{forum}', 'API\ForumController@update');
 Route::get('/forums/show_staff', 'API\ForumController@show_staff');
-Route::get('/forums/destroy_staff/{executiveStaff}', 'API\umController@destroy_staff');
+Route::get('/forums/destroy_staff/{executiveStaff}', 'API\ForumController@destroy_staff');
 
 
 
@@ -81,8 +81,8 @@ Route::get('/forms/show/{id}', 'API\FormController@show');
 
 
 /*results */
-Route::post('/results/add', 'API\ResultControllerr@store');
-Route::post('/results/final_judge', 'API\ResultControllerr@final_judge');
+Route::post('/results/add', 'API\ResultController@store');
+Route::post('/results/final_judge', 'API\ResultController@final_judge');
 
 //test
 //Route::get('/test', 'API\APIJudgmentController@test_method');
