@@ -27,8 +27,8 @@ class ResultController extends Controller
     public function store(Request $request)
     {
         $request = $request->all();
+        $user_id = Auth('api')->user()->id;
         $project_id = $request['project_id'];
-        $user_id = auth('api')->user()->id;
         foreach ($request['factors'] as $factor)
         {
             Result::create([

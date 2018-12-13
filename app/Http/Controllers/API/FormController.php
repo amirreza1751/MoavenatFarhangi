@@ -28,7 +28,6 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-
         $form_name = $request->form_name;
         $project_type_id = $request->project_type_id ;
         $existing_factors = $request->existing_factors;
