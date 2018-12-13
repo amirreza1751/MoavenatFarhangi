@@ -38,53 +38,77 @@ Route::group([
     Route::patch('/edit/{college}', 'API\CollegeController@update');//id bayad begire
 });
 
-/*forums*/
-Route::get('/forums', 'API\ForumController@index');
-Route::get('/forums/{forum}', 'API\ForumController@show');
-Route::post('/forums/add', 'API\ForumController@store');
-Route::get('/forums/add_staff', 'API\ForumController@add_staff');
-Route::get('/forums/remove/{forum}', 'API\ForumController@destroy');
-Route::patch('/forums/edit/{forum}', 'API\ForumController@update');
-Route::get('/forums/show_staff', 'API\ForumController@show_staff');
-
-Route::get('/forums/destroy_staff/{executiveStaff}', 'API\ForumController@destroy_staff');
-Route::get('/forums/destroy_staff/{executiveStaff}', 'API\forumController@destroy_staff');
 
 
+Route::group([
+    'prefix' => 'forums',
+    //'middleware' =>'auth:api'
+],function(){
+    Route::get('/', 'API\ForumController@index');
+    Route::get('/{forum}', 'API\ForumController@show');
+    Route::post('/add', 'API\ForumController@store');
+    Route::get('/add_staff', 'API\ForumController@add_staff');
+    Route::get('/remove/{forum}', 'API\ForumController@destroy');
+    Route::patch('/edit/{forum}', 'API\ForumController@update');
+    Route::get('/show_staff', 'API\ForumController@show_staff');
+
+    Route::get('/destroy_staff/{executiveStaff}', 'API\ForumController@destroy_staff');
+    Route::get('/destroy_staff/{executiveStaff}', 'API\forumController@destroy_staff');
+});
 
 
-/*projects*/
-Route::get('/projects', 'API\ProjectController@index');
-Route::get('/projects/add', 'API\ProjectController@store');
-Route::get('/projects/remove/{project}', 'API\ProjectController@destroy');
-Route::patch('/projects/edit/{project}', 'API\ProjectController@update');
-Route::patch('/projects/edit_cost/{cost}', 'API\ProjectController@update_cost');
-Route::get('/projects/add_staff', 'API\ProjectController@add_staff');
-Route::get('/projects/{id}/show_staff', 'API\ProjectController@show_staff');
-Route::get('/projects/remove_staff', 'API\ProjectController@destroy_staff');
-Route::post('/projects/search', 'API\ProjectController@search');
-Route::post('/projects/show/{Project}', 'API\ProjectController@show');
-Route::get('/projects/add_cost', 'API\ProjectController@add_cost');
-Route::get('/projects/{id}/costs', 'API\ProjectController@index_cost');
-
-
-/*factor-controller*/
-Route::post('/factors/add', 'API\FactorController@store');
-Route::get('/factors', 'API\FactorController@index');
-
-
-
-/*form-controller*/
-Route::post('/forms/add', 'API\FormController@store');
-Route::get('/forms/show/{id}', 'API\FormController@show');
+Route::group([
+    'prefix' => 'projects',
+    //'middleware' =>'auth:api'
+],function(){
+    Route::get('/', 'API\ProjectController@index');
+    Route::get('/add', 'API\ProjectController@store');
+    Route::get('/remove/{project}', 'API\ProjectController@destroy');
+    Route::patch('/edit/{project}', 'API\ProjectController@update');
+    Route::patch('/edit_cost/{cost}', 'API\ProjectController@update_cost');
+    Route::get('/add_staff', 'API\ProjectController@add_staff');
+    Route::get('/{id}/show_staff', 'API\ProjectController@show_staff');
+    Route::get('/remove_staff', 'API\ProjectController@destroy_staff');
+    Route::post('/search', 'API\ProjectController@search');
+    Route::post('/show/{Project}', 'API\ProjectController@show');
+    Route::get('/add_cost', 'API\ProjectController@add_cost');
+    Route::get('/{id}/costs', 'API\ProjectController@index_cost');
+});
 
 
 
 
 
-/*results */
-Route::post('/results/add', 'API\ResultController@store');
-Route::post('/results/final_judge', 'API\ResultController@final_judge');
+Route::group([
+    'prefix' => 'factors',
+    //'middleware' =>'auth:api'
+],function(){
+    Route::post('/add', 'API\FactorController@store');
+    Route::get('/', 'API\FactorController@index');
+});
+
+
+
+
+Route::group([
+    'prefix' => 'forms',
+    //'middleware' =>'auth:api'
+],function(){
+    Route::post('/add', 'API\FormController@store');
+    Route::get('/show/{id}', 'API\FormController@show');
+});
+
+
+
+Route::group([
+    'prefix' => 'results',
+    //'middleware' =>'auth:api'
+],function(){
+    Route::post('/add', 'API\ResultController@store');
+    Route::post('/final_judge', 'API\ResultController@final_judge');
+});
+
+
 
 //test
 //Route::get('/test', 'API\APIJudgmentController@test_method');
