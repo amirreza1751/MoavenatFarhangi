@@ -39,6 +39,7 @@ class ResultController extends Controller
                 'user_id'=> $user_id
             ]);
         }
+        return response()->json(['response' => 'results stored successfully.'], 200);
 
     }
 
@@ -57,6 +58,7 @@ class ResultController extends Controller
                 'user_id'=> $user_id
             ]);
         }
+        return response()->json(['response' => 'final results stored successfully.'], 200);
     }
 
     /**
