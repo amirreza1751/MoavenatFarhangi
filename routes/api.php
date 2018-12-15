@@ -39,6 +39,16 @@ Route::group([
 });
 
 
+Route::group([
+    'prefix' => 'project_types',
+    //'middleware' =>'auth:api'
+],function(){
+    Route::get('/', 'API\ProjectTypeController@index');
+//    Route::post('/add', 'API\CollegeController@store');
+//    Route::get('/remove/{college}', 'API\CollegeController@destroy');
+//    Route::patch('/edit/{college}', 'API\CollegeController@update');
+});
+
 
 Route::group([
     'prefix' => 'forums',
@@ -47,7 +57,7 @@ Route::group([
     Route::get('/', 'API\ForumController@index');
     Route::get('/{forum}', 'API\ForumController@show');
     Route::post('/add', 'API\ForumController@store');
-    Route::get('/add_staff', 'API\ForumController@add_staff');
+    Route::post('/add_staff', 'API\ForumController@add_staff');
     Route::get('/remove/{forum}', 'API\ForumController@destroy');
     Route::patch('/edit/{forum}', 'API\ForumController@update');
     Route::get('/show_staff', 'API\ForumController@show_staff');
@@ -62,16 +72,16 @@ Route::group([
     //'middleware' =>'auth:api'
 ],function(){
     Route::get('/', 'API\ProjectController@index');
-    Route::get('/add', 'API\ProjectController@store');
+    Route::post('/add', 'API\ProjectController@store');
     Route::get('/remove/{project}', 'API\ProjectController@destroy');
     Route::patch('/edit/{project}', 'API\ProjectController@update');
     Route::patch('/edit_cost/{cost}', 'API\ProjectController@update_cost');
-    Route::get('/add_staff', 'API\ProjectController@add_staff');
+    Route::post('/add_staff', 'API\ProjectController@add_staff');
     Route::get('/{id}/show_staff', 'API\ProjectController@show_staff');
     Route::get('/remove_staff', 'API\ProjectController@destroy_staff');
     Route::post('/search', 'API\ProjectController@search');
-    Route::post('/show/{Project}', 'API\ProjectController@show');
-    Route::get('/add_cost', 'API\ProjectController@add_cost');
+    Route::get('/show/{Project}', 'API\ProjectController@show');
+    Route::post('/add_cost', 'API\ProjectController@add_cost');
     Route::get('/{id}/costs', 'API\ProjectController@index_cost');
 });
 

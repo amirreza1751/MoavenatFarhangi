@@ -16,7 +16,7 @@ class ProjectTypeController extends Controller
     public function index()
     {
         $project_types = project_type::all();
-        return response()->json($projectType,200);
+        return response()->json($project_types,200);
     }
 
     /**
