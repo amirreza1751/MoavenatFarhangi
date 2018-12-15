@@ -11,7 +11,7 @@ class project extends Model
     protected $dates = ['deleted_at', 'updated_at', 'created_at'];
     protected $fillable = ['name', 'type', 'start_date', 'start_time', 'end_date', 'place', 'level', 'capacity', 'cost',
         'final_cost', 'suggest_form', 'final_report', 'documentation', 'grade', 'total_hours',
-        'forum_id','purpose','sideway_programs','detailed_programs','innovation','sponsors','description','master','letter_number','manager_sign','expert_sign'];
+        'forum_id','purpose','sideway_programs','detailed_programs','innovation','sponsors','description','master','letter_number','manager_sign','expert_sign','project_type_id'];
     protected $table = 'projects';
 
 
