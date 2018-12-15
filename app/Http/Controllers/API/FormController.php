@@ -86,8 +86,8 @@ class FormController extends Controller
     public function show($id)
     {
         // id => project type id
-        $form = Form::where('project_type_id', $id)->where('active', 1)->with('factors')->get();
-        return $form[0];
+        $form = Form::where('project_type_id', $id)->where('active', 1)->with('factors')->first();
+        return $form;
     }
 
     /**
