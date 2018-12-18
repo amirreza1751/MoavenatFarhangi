@@ -44,9 +44,9 @@ Route::group([
     //'middleware' =>'auth:api'
 ],function(){
     Route::get('/', 'API\ProjectTypeController@index');
-    Route::post('/add', 'API\CollegeController@store');
-    Route::get('/remove/{college}', 'API\CollegeController@destroy');
-    Route::patch('/edit/{college}', 'API\CollegeController@update');
+    Route::post('/add', 'API\ProjectTypeController@store');
+    Route::get('/remove/{college}', 'API\ProjectTypeController@destroy');
+    Route::patch('/edit/{college}', 'API\ProjectTypeController@update');
 });
 
 
