@@ -35,7 +35,7 @@ class ResultController extends Controller
                 'grade' => $factor['grade'],
                 'is_final_judge' => 0,
                 'project_id' => $project_id,
-                'factor_id' => $factor['factor_id'],
+                'factor_id' => $factor['id'],
                 'user_id'=> $user_id
             ]);
         }

@@ -60,8 +60,9 @@ class ProjectTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project_Type $project_type )
     {
-        //
+        $project_type->delete();
+        return response()->json($project_type,200);
     }
 }

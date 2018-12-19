@@ -45,8 +45,8 @@ Route::group([
 ],function(){
     Route::get('/', 'API\ProjectTypeController@index');
     Route::post('/add', 'API\ProjectTypeController@store');
-    Route::get('/remove/{college}', 'API\ProjectTypeController@destroy');
-    Route::patch('/edit/{college}', 'API\ProjectTypeController@update');
+    Route::get('/remove/{project_type}', 'API\ProjectTypeController@destroy');
+    Route::patch('/edit/{project_type}', 'API\ProjectTypeController@update');
 });
 
 
